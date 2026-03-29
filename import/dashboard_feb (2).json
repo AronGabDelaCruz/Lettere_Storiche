@@ -1,0 +1,2090 @@
+{
+  "title": "TacitRoots",
+  "version": "2.4",
+  "settings": {
+    "pagenumber": 2,
+    "editable": true,
+    "fullscreenEnabled": false,
+    "parameters": {
+      "neodash_field_name": "astronomy/astrology",
+      "neodash_field_name_display": "astronomy",
+      "neodash_field_id": "anthropology",
+      "neodash_field_id_display": "anthropology",
+      "neodash_entity": "Document",
+      "neodash_label": "Instrument",
+      "neodash_relation": "MAKER_OF",
+      "undefined": 1655,
+      "undefined_display": 1655,
+      "neodash_person_name": "Leopoldo de' Medici",
+      "neodash_document_year_1650": 1656,
+      "neodash_document_year_1650_display": 1656,
+      "neodash_range": "1",
+      "neodash_book": "Saggi di Naturali Esperienze",
+      "neodash_top_books": "20",
+      "neodash_topbooks": "10",
+      "neodash_root_field": "print culture",
+      "neodash_main_field": "natural philosophy",
+      "neodash_person_communityid": 7,
+      "neodash_person_communityid_display": 7,
+      "neodash_person_name_display": "Leopoldo de' Medici",
+      "neodash_p1": "Boulliau, Ismaël",
+      "neodash_p2": "Boulliau, Ismaël",
+      "neodash_p3": "Boulliau, Ismaël",
+      "neodash_p4": "Boulliau, Ismaël",
+      "neodash_person_name_p1": "Vincenzo Viviani",
+      "neodash_person_name_p1_display": "Vincenzo Viviani",
+      "neodash_field_book": "mixed mathematics",
+      "neodash_rootField": "theology",
+      "neodash_tool": "telescope",
+      "neodash_document_year": 1636,
+      "neodash_document_year_display": 1636,
+      "neodash_document_year_1648": 1650,
+      "neodash_document_year_1648_display": 1650,
+      "neodash_document_year_1680": 1674,
+      "neodash_document_year_1680_display": 1674,
+      "neodash_person_name_2": "Leopoldo de' Medici",
+      "neodash_person_name_2_display": "Leopoldo de' Medici",
+      "neodash_pname1": "Giovanni Alfonso Borelli",
+      "neodash_pname2": "Leopoldo de' Medici",
+      "neodash_experiment": "astronomical observations",
+      "neodash_document_year_1640": 1636,
+      "neodash_document_year_1640_display": 1636,
+      "neodash_document_year_1630": 1636,
+      "neodash_document_year_1630_display": 1636,
+      "neodash_receiver": "Ismaël Boulliau",
+      "neodash_sender": "Leopoldo de' Medici",
+      "neodash_year": "1663",
+      "neodash_human_name_1": "Vincenzo Viviani",
+      "neodash_human_name_1_display": "Vincenzo Viviani",
+      "neodash_person_name_1": "Pierre Desnoyers",
+      "neodash_person_name_1_display": "Pierre Desnoyers"
+    },
+    "theme": "light"
+  },
+  "pages": [
+    {
+      "title": "Overview",
+      "reports": [
+        {
+          "title": "Node Properties",
+          "query": "call db.schema.nodeTypeProperties() yield nodeLabels, propertyName \nwhere $neodash_label in nodeLabels\ncall {with propertyName\n      match (n) where  n[propertyName] is not null and $neodash_label in labels(n)\n      return count(n) as num}\nreturn propertyName as `Field Name`, num as `N. entries`\norder by num desc\n\n\n\n",
+          "width": 6,
+          "height": 4,
+          "x": 0,
+          "y": 2,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "compact": true,
+            "backgroundColor": "rgba(240, 246, 245, 0)",
+            "columnWidths": "[0.6, 0.4]"
+          },
+          "id": "a4981910-6bb1-4348-96ee-234417d05d32"
+        },
+        {
+          "title": "Subgraph from selected relationship",
+          "query": "match (n)-[r]->(b)\nwhere $neodash_relation = type(r)\nreturn n, r,  b limit 200\n\n\n",
+          "width": 12,
+          "height": 6,
+          "x": 6,
+          "y": 4,
+          "type": "graph",
+          "selection": {
+            "Person": "name",
+            "MainComponent": "name",
+            "MAKER_OF": "(label)",
+            "Experiment": "name",
+            "Instrument": "name"
+          },
+          "settings": {
+            "backgroundColor": "rgba(122, 248, 252, 0.16)",
+            "nodeLabelColor": "rgba(53, 75, 129, 0.99)",
+            "relLabelFontSize": 2,
+            "arrowLengthProp": 2,
+            "showPropertiesOnHover": false,
+            "hideSelections": false,
+            "nodeColorScheme": "paired",
+            "relLabelColor": "navy",
+            "defaultRelColor": "blue",
+            "nodeColorProp": "navy",
+            "nodeSizeProp": "4",
+            "defaultRelWidth": 0.5,
+            "defaultNodeSize": 8,
+            "frozen": false,
+            "nodeLabelFontSize": 6,
+            "nodePositions": {}
+          },
+          "id": "b11aa373-6b1c-4dec-8353-c4f35d6d7efb",
+          "schema": [
+            [
+              "Person",
+              "louvain",
+              "btw",
+              "death",
+              "wcc",
+              "name",
+              "birth",
+              "colorLouvain",
+              "id",
+              "wikipedia",
+              "community",
+              "wikidata",
+              "notes",
+              "aka",
+              "name_la",
+              "new"
+            ],
+            [
+              "MainComponent",
+              "louvain",
+              "btw",
+              "death",
+              "wcc",
+              "name",
+              "birth",
+              "colorLouvain",
+              "id",
+              "wikipedia",
+              "community",
+              "wikidata",
+              "notes",
+              "aka",
+              "name_la"
+            ],
+            [
+              "MAKER_OF"
+            ],
+            [
+              "Experiment",
+              "new",
+              "name",
+              "description",
+              "type",
+              "materials"
+            ],
+            [
+              "Instrument",
+              "name",
+              "new",
+              "description"
+            ]
+          ]
+        },
+        {
+          "title": "Number of Nodes",
+          "query": "match (n) return count(n)\n\n",
+          "width": 6,
+          "height": 2,
+          "x": 12,
+          "y": 0,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "backgroundColor": "#0e38ae",
+            "fontSize": 80,
+            "color": "lightblue",
+            "monospace": true,
+            "textAlign": "right",
+            "verticalAlign": "bottom"
+          },
+          "id": "be551863-2220-4dce-ab01-09afe10366ac"
+        },
+        {
+          "title": "Number of Relations",
+          "query": "match (n)-[r]->(b) return count(r)\n\n",
+          "width": 6,
+          "height": 2,
+          "x": 18,
+          "y": 0,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "backgroundColor": "#0e38ae",
+            "fontSize": 80,
+            "color": "lightblue",
+            "monospace": true,
+            "textAlign": "right",
+            "verticalAlign": "bottom"
+          },
+          "id": "b76cc918-dfcd-4668-82ad-e5021571adbf"
+        },
+        {
+          "title": "Nodes by Label",
+          "query": "call db.labels() yield label\ncall {\nwith label\nmatch (n) where label in labels(n)\nreturn count(n) as num\n}\nreturn label as `Node Label`, num  as `N. of Nodes`order by `N. of Nodes` desc\n\n\n",
+          "width": 6,
+          "height": 4,
+          "x": 6,
+          "y": 0,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "compact": true,
+            "styleRules": [
+              {
+                "field": "label",
+                "condition": "contains",
+                "value": "",
+                "customization": "row text color",
+                "customizationValue": "#49078d"
+              }
+            ],
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Rel Type",
+                "value": "Rel Type",
+                "customization": "set variable",
+                "customizationValue": "relation"
+              },
+              {
+                "condition": "Click",
+                "field": "Node Label",
+                "value": "Node Label",
+                "customization": "set variable",
+                "customizationValue": "label"
+              }
+            ]
+          },
+          "id": "b36a469a-315b-452e-9430-a49a40dafa73"
+        },
+        {
+          "title": "Selected node type...",
+          "query": "return $neodash_label\n\n\n",
+          "width": 6,
+          "height": 2,
+          "x": 0,
+          "y": 0,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "fontSize": 54,
+            "styleRules": [
+              {
+                "field": "",
+                "condition": "=",
+                "value": "",
+                "customization": "text color",
+                "customizationValue": "black"
+              }
+            ]
+          },
+          "id": "73bbe928-7f77-4cc8-83d7-33ef8123e0a5"
+        },
+        {
+          "title": "Relations by Type",
+          "query": "call db.relationshipTypes() yield relationshipType\ncall {\nwith relationshipType\nmatch (n)-[r]->(b) where relationshipType =type(r)\nreturn count(r) as num\n}\nreturn relationshipType as `Rel Type`, num  as `N.`order by `N.` desc\n\n\n",
+          "width": 6,
+          "height": 6,
+          "x": 18,
+          "y": 4,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "compact": true,
+            "styleRules": [
+              {
+                "field": "label",
+                "condition": "contains",
+                "value": "",
+                "customization": "row text color",
+                "customizationValue": "#49078d"
+              }
+            ],
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Rel Type",
+                "value": "Rel Type",
+                "customization": "set variable",
+                "customizationValue": "relation"
+              }
+            ]
+          },
+          "id": "106133ad-894b-40ea-979f-8117ea861562"
+        },
+        {
+          "title": "",
+          "query": "# ***Some stats about the graph ...***\n",
+          "width": 12,
+          "height": 2,
+          "x": 12,
+          "y": 2,
+          "type": "text",
+          "selection": {},
+          "settings": {},
+          "id": "03589ffe-707b-4f8a-8fa2-258712d69e37"
+        },
+        {
+          "title": "Node Relations",
+          "query": "\nmatch (n) where  $neodash_label in labels(n)\nmatch (n)-[r]-(b)\nreturn type(r) as rel, count(n) as num\norder by num desc\n\n\n\n",
+          "width": 6,
+          "height": 4,
+          "x": 0,
+          "y": 6,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "compact": true,
+            "backgroundColor": "rgba(240, 246, 245, 0)",
+            "columnWidths": "[0.6, 0.4]"
+          },
+          "id": "11722228-35e0-41f5-a271-8cf4a17da308"
+        }
+      ]
+    },
+    {
+      "title": "Temi di discussione",
+      "reports": [
+        {
+          "title": "Seleziona la tematica secondaria",
+          "query": "match (root:Field) \nwhere root.name = $neodash_field_name\n//ricerca subfield diretti\noptional match (f:Field)-[:SUBFIELD_OF]->(root)\nwith root, case when collect(f) = [] then [root] else collect(f) end as children\n\nunwind children as child\ncall { with child\noptional match (child)<-[:SUBFIELD_OF*]-(f:Field)\nwith child, case when collect(distinct f)=[] then [child] else collect(distinct f) end as children\nwith child, children + child as all_children\nunwind all_children as ch\noptional match (ch)<-[:TAGGED_WITH]-(d:Document)\nwhere d.year is not null\nreturn count(distinct d) as docsInChild\n}\nreturn child.name as Field, docsInChild as `N. doc`  \norder by `N. doc` DESC\n\n\n",
+          "width": 8,
+          "height": 4,
+          "x": 0,
+          "y": 8,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Field",
+                "value": "Field",
+                "customization": "set variable",
+                "customizationValue": "field_name"
+              }
+            ],
+            "columnWidths": "[0.7, 0.3]"
+          },
+          "id": "58b0a5e0-5be7-49c5-8fee-009a35484800"
+        },
+        {
+          "title": "Andamento della tematica di discussione nel tempo",
+          "query": "with range(1648, 1667) as period\ncall {\nmatch (r:Field) where r.name = $neodash_field_name\nOPTIONAL MATCH (f)-[:SUBFIELD_OF*]->(r)\nWITH r, CASE WHEN f IS NOT NULL THEN f ELSE r END AS child\nWITH r, collect(child.name) as children\nreturn children + r.name AS fields\n}\nwith period, fields\nunwind period as year\ncall {with year, fields\n  // fetch docs written in a given year\n  match (d:Document)\n  where d.year = year\n  with year, count(distinct d) as totYear, fields\n\n  unwind fields as field_name\n  optional match (d:Document)-[:TAGGED_WITH]->(f:Field)\n  where f.name = field_name and d.year = year\n  //with totYear, collect(distinct d) as docInField \n  //with totYear, case when docInField = [] then [null] else docInField end as check\n  //unwind check as doc\n  with totYear, count(distinct d) as docsInField\n  return toFloat(docsInField)/toFloat(totYear) as fracInFieldYear,\n  docsInField, totYear as totDocYear\n}\nwith year, fracInFieldYear, docsInField, fields, totDocYear\ncall {\n  with year\n  optional match (d:Document)<-[:CITED_IN]-(b:Book)\n  where d.year = year \n  with count(distinct d) as tot\n  return case when tot<1 then 0.001 else tot end as nCitingYear\n}\nwith year, fracInFieldYear, nCitingYear, fields, docsInField, totDocYear\n // per ogni campo di interesse fetch docs citing nel capo\nunwind fields as field_name\noptional match (d:Document)<-[:CITED_IN]-(b:Book)-[:TAGGED_WITH]->(f:Field)\nwhere d.year = year and f.name = field_name\n//with year, fracInFieldYear, nCitingYear, collect(distinct d) as docsField, docsInField, totDocYear\n//with year, fracInFieldYear, nCitingYear, docsInField,totDocYear, case when docsField = [] then [null] else docsField end as check\n//unwind check as doc\nwith year, fracInFieldYear, nCitingYear, count(distinct d) as nCitingInField, docsInField, totDocYear\nreturn year, totDocYear as `Total documents in year`, nCitingInField as `N. documents citing in Field`,fracInFieldYear, docsInField as `N.documents written in Field`, round(nCitingInField/toFloat(nCitingYear),2) as fracCitingInField\norder by year\n\n",
+          "width": 16,
+          "height": 4,
+          "x": 8,
+          "y": 2,
+          "type": "line",
+          "selection": {
+            "x": "year",
+            "value": [
+              "Total documents in year",
+              "N.documents written in Field"
+            ]
+          },
+          "settings": {
+            "colors": "paired",
+            "curve": "basis",
+            "marginLeft": 65,
+            "marginRight": 40,
+            "marginTop": 40,
+            "legend": true,
+            "legendWidth": 180,
+            "backgroundColor": "rgba(166, 211, 220, 0.42)",
+            "hideSelections": true
+          },
+          "id": "9b62d68f-2c21-4210-a426-960faea65730"
+        },
+        {
+          "title": "Seleziona la tematica (Main Field)",
+          "query": "\nMATCH (d:Document)-[:TAGGED_WITH]->(f:Field)\nwhere d.year is not null\nOPTIONAL MATCH (root)<-[:SUBFIELD_OF*]-(f)\nWHERE NOT EXISTS{\n MATCH (root)-[:SUBFIELD_OF*]->()\n}\nWITH d, CASE WHEN root IS NOT NULL THEN root ELSE f END AS parent\nWITH parent, count(DISTINCT d) AS `N. doc in Field` \nRETURN parent.name AS Field, `N. doc in Field` \nORDER BY `N. doc in Field`  DESC\n\n",
+          "width": 8,
+          "height": 4,
+          "x": 0,
+          "y": 4,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Field",
+                "value": "Field",
+                "customization": "set variable",
+                "customizationValue": "field_name"
+              }
+            ],
+            "columnWidths": "[0.6, 0.4]"
+          },
+          "id": "6b1e5693-b16f-4de4-823a-8391715aab71"
+        },
+        {
+          "title": "",
+          "query": "\n#  *Tematiche di discussione*\n\n",
+          "width": 24,
+          "height": 2,
+          "x": 0,
+          "y": 0,
+          "type": "text",
+          "selection": {},
+          "settings": {},
+          "id": "76177d97-bcc2-40c1-8041-488d8d3b8af7"
+        },
+        {
+          "title": "Chi scrive nella tematica",
+          "query": "\nmatch (r:Field) where r.name = $neodash_field_name\ncall {with r\nOPTIONAL MATCH (r)<-[:SUBFIELD_OF*]-(f)\nWITH r, CASE WHEN f IS NOT NULL THEN f ELSE r END AS child\nWITH r, collect(distinct child.name) as children\nreturn r as root, children  AS fields\n}\nwith  root, fields\nmatch (p:Person)-[:WRITTEN_BY]-(d:Document)-[:TAGGED_WITH]-(f:Field)\nwhere f.name in fields\nwith  p, root, count(distinct d) as w\norder by w DESC limit 12\nRETURN p, apoc.create.vRelationship(p, \"IN\", {weight: toFloat(w)}, root), root\n\n",
+          "width": 8,
+          "height": 4,
+          "x": 8,
+          "y": 8,
+          "type": "sankey",
+          "selection": {
+            "Person": "name",
+            "MainComponent": "name",
+            "Field": "name"
+          },
+          "settings": {
+            "labelProperty": "weight"
+          },
+          "id": "ab32ba7d-1d62-4528-99ac-6421fcb646ae"
+        },
+        {
+          "title": "Chi riceve nella tematica",
+          "query": "\nmatch (r:Field) where r.name = $neodash_field_name\ncall {with r\nOPTIONAL MATCH (f)-[:SUBFIELD_OF*]->(r)\nWITH r, CASE WHEN f IS NOT NULL THEN f ELSE r END AS child\nWITH r, collect(child.name) as children\nreturn r as root, children + r.name AS fields\n}\nwith  root, fields\nmatch (p:Person)<-[:RECEIVED_BY]-(d:Document)-[:TAGGED_WITH]->(f:Field)\nwhere f.name in fields\nwith p, root, count(distinct d) as w\norder by w DESC limit 12\nRETURN root, apoc.create.vRelationship(root, \"IN\", {weight: toFloat(w)}, p), p\n\n",
+          "width": 8,
+          "height": 4,
+          "x": 16,
+          "y": 8,
+          "type": "sankey",
+          "selection": {
+            "Field": "name",
+            "Person": "name",
+            "MainComponent": "name"
+          },
+          "settings": {
+            "labelProperty": "weight"
+          },
+          "id": "af355e45-d9e8-4d9c-9475-4fc71ecb4f9b"
+        },
+        {
+          "title": "",
+          "query": "\n## **Ci sono temi di discussione che sono associabili solo a determinati autori ?**\n(mittenti o destinatari)\n\n\n",
+          "width": 16,
+          "height": 2,
+          "x": 8,
+          "y": 6,
+          "type": "text",
+          "selection": {},
+          "settings": {},
+          "id": "9a95a078-07c0-45fd-a8ea-e9d5ce055a68"
+        },
+        {
+          "title": "Tematica selezionata",
+          "query": "return $neodash_field_name\n",
+          "width": 8,
+          "height": 2,
+          "x": 0,
+          "y": 2,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "monospace": true,
+            "verticalAlign": "middle",
+            "textAlign": "center",
+            "backgroundColor": "rgba(18, 29, 161, 0.71)",
+            "fontSize": 30,
+            "color": "lightblue"
+          },
+          "id": "30ac07c0-aeec-493f-ab56-fadbc948bea1"
+        },
+        {
+          "title": "Libri citati nell'ambito della tematica",
+          "query": "call {\nmatch (r:Field) where r.name = $neodash_field_name\nOPTIONAL MATCH (f)-[:SUBFIELD_OF*]->(r)\nWITH r, CASE WHEN f IS NOT NULL THEN f ELSE r END AS child\nWITH r, collect(child.name) as children\nreturn children + r.name AS fields\n}\nwith fields\nmatch (d:Document)-[:TAGGED_WITH]->(f:Field)\nwhere f.name in fields\nmatch (d)-[:CITED_IN]-(b:Book where b.title is not null)\nwith b, count(distinct d) as n_mentions\nreturn b.title as Libro, n_mentions as `N. citazioni` order by `N. citazioni` desc \n\n",
+          "width": 8,
+          "height": 4,
+          "x": 0,
+          "y": 12,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "nodeColorScheme": "paired",
+            "nodeLabelFontSize": 6,
+            "defaultNodeSize": 4,
+            "relLabelFontSize": 0,
+            "arrowLengthProp": 2,
+            "defaultRelColor": "lightblue",
+            "frozen": true,
+            "nodePositions": {
+              "1534": [
+                0,
+                0
+              ],
+              "1545": [
+                0,
+                0
+              ],
+              "1547": [
+                -8.679951704669888,
+                -1.9796381080826058
+              ],
+              "1548": [
+                0,
+                0
+              ],
+              "1899": [
+                6.125280560080753,
+                -1.0965582835456649
+              ],
+              "1900": [
+                -13.885412892379588,
+                8.917246300018014
+              ],
+              "1901": [
+                1.5215869438752563,
+                -19.89350793582362
+              ],
+              "1902": [
+                16.009441463988082,
+                17.104530180755827
+              ],
+              "1903": [
+                -25.194080338244643,
+                -6.221853594170259
+              ],
+              "1904": [
+                28.018461247858635,
+                -20.94961208729127
+              ],
+              "1905": [
+                -8.473040588697273,
+                28.741414257560464
+              ],
+              "1906": [
+                -14.408299093328615,
+                -29.240045647481015
+              ],
+              "1907": [
+                36.34678443255839,
+                12.72118102772899
+              ],
+              "1908": [
+                -29.859860212572865,
+                11.252387397187292
+              ],
+              "1909": [
+                15.813588687786481,
+                -35.68924264505935
+              ],
+              "1910": [
+                11.991593053800143,
+                35.39100465816239
+              ],
+              "1911": [
+                -28.266966546891933,
+                -19.653247787487725
+              ],
+              "1912": [
+                35.13512141635026,
+                -8.988277581464699
+              ],
+              "1913": [
+                -11.909857570046828,
+                24.876604809539202
+              ],
+              "1914": [
+                -0.8619245465163816,
+                -41.27760671961078
+              ],
+              "1915": [
+                36.44387477642045,
+                28.063499176487415
+              ],
+              "1916": [
+                -51.32751681918987,
+                2.5810001977640207
+              ],
+              "1917": [
+                21.493768060594043,
+                -32.47517168562261
+              ],
+              "1918": [
+                -9.336495621559926,
+                34.12770500881388
+              ],
+              "1919": [
+                -26.14834804112436,
+                -34.85145823222953
+              ],
+              "1920": [
+                47.63655382080299,
+                5.563572482276314
+              ],
+              "1921": [
+                -34.83525939278794,
+                22.709601638601477
+              ],
+              "1922": [
+                1.8755850445553683,
+                -35.66330564695895
+              ],
+              "1923": [
+                15.589789583152209,
+                44.47938947743924
+              ],
+              "1924": [
+                -42.44317349784707,
+                -15.262566089112966
+              ],
+              "1925": [
+                45.08603064719505,
+                -21.697675128672284
+              ],
+              "1926": [
+                -17.218928150934318,
+                42.306185034276595
+              ],
+              "1927": [
+                -16.58122638410291,
+                -4.70884054904616
+              ],
+              "1928": [
+                -4.574983032202081,
+                15.689492118041004
+              ],
+              "1929": [
+                7.10079908589758,
+                -21.003105463548277
+              ],
+              "1930": [
+                12.433242330401054,
+                14.229427969436367
+              ],
+              "1931": [
+                -25.65908556789189,
+                -4.089494876486073
+              ],
+              "1932": [
+                19.878677702461985,
+                -14.033255775829202
+              ],
+              "1933": [
+                -7.403146128002155,
+                26.814509462020364
+              ],
+              "1934": [
+                -12.614394762839135,
+                -34.972532535361246
+              ],
+              "1935": [
+                28.227082621350636,
+                8.379978521589814
+              ],
+              "2029": [
+                -21.3574182545164,
+                12.140549835258843
+              ],
+              "2030": [
+                18.22893158026792,
+                -29.984017684296838
+              ],
+              "2031": [
+                12.051484648380239,
+                36.85167341185771
+              ],
+              "2060": [
+                8.174066008941416,
+                -2.579551116112862
+              ],
+              "2061": [
+                -16.522964567055453,
+                9.548991451790732
+              ],
+              "2062": [
+                -2.4528786604246817,
+                -27.096261015939636
+              ],
+              "2063": [
+                14.349436098678323,
+                22.801578310390674
+              ],
+              "2064": [
+                -24.48122094320471,
+                -7.051583025752404
+              ],
+              "2065": [
+                27.17288045213938,
+                -21.88442947120439
+              ],
+              "2066": [
+                -8.44977190789037,
+                26.353084933241814
+              ],
+              "2067": [
+                0,
+                0
+              ],
+              "2068": [
+                0,
+                0
+              ]
+            },
+            "columnWidths": "[0.8, 0.2]"
+          },
+          "id": "9736eeb5-dcf3-4b9a-8026-3c254d4d164f"
+        },
+        {
+          "title": "",
+          "query": "\n#  *Tematiche dei libri citati*\n\n",
+          "width": 16,
+          "height": 2,
+          "x": 8,
+          "y": 12,
+          "type": "text",
+          "selection": {},
+          "settings": {},
+          "id": "41f721ba-40f5-4e14-8c4c-9c1dfca031a7"
+        },
+        {
+          "title": "Anni in cui vengono citati i libri contrassegnati con il field selezionato",
+          "query": "with range(1648, 1668) as period\ncall {\nmatch (r:Field) where r.name = $neodash_rootField\nOPTIONAL MATCH (f)-[:SUBFIELD_OF*]->(r)\nWITH r, CASE WHEN f IS NOT NULL THEN f ELSE r END AS child\nWITH r, collect(child.name) as children\nreturn children + r.name AS fields\n}\nwith period, fields order by period asc\nunwind period as year\nwith year, fields\noptional match (d:Document)<-[:CITED_IN]-(b:Book) where d.year = year \nwith year, fields, count(distinct b) as totBooksYear\noptional match (d:Document)<-[:CITED_IN]-(b:Book)-[:TAGGED_WITH]-(fb:Field)\nwhere d.year = year and fb.name in fields\nreturn year, totBooksYear as `Totale libri citati`, count(distinct b) as `N. libri nel field`",
+          "width": 16,
+          "height": 4,
+          "x": 8,
+          "y": 14,
+          "type": "line",
+          "selection": {
+            "x": "year",
+            "value": [
+              "Totale libri citati",
+              "N. libri nel field"
+            ]
+          },
+          "settings": {
+            "legend": true,
+            "colors": "paired",
+            "marginTop": 60,
+            "marginRight": 60,
+            "curve": "cardinal",
+            "legendWidth": 180,
+            "marginBottom": 50,
+            "marginLeft": 60,
+            "showGrid": false
+          },
+          "id": "fc836407-a583-43a5-a96d-ba5ad442325a"
+        },
+        {
+          "title": "Field dei libri in circolazione",
+          "query": "match (r:Field) \nwhere r.main is not null\ncall {\nwith r\nOPTIONAL MATCH (f)-[:SUBFIELD_OF*]->(r)\nWITH r, CASE WHEN f IS NOT NULL THEN f ELSE r END AS child\nWITH r, collect(child.name) as children\nreturn children + r.name AS fields\n}\nwith r, fields\nmatch (d:Document)<-[:CITED_IN]-(b:Book)-[:TAGGED_WITH]->(f:Field)\nwhere f.name in fields\nreturn r.name as Field, count(distinct b) as `N. libri nel Field`\norder by `N. libri nel Field` desc\nlimit 10\n",
+          "width": 8,
+          "height": 3,
+          "x": 0,
+          "y": 16,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "colors": "paired",
+            "arcLinkLabelsOffset": 1,
+            "cornerRadius": 0.4,
+            "marginLeft": 40,
+            "marginRight": 40,
+            "marginTop": 50,
+            "enableArcLabels": false,
+            "innerRadius": 0.5,
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Field",
+                "value": "Field",
+                "customization": "set variable",
+                "customizationValue": "rootField"
+              }
+            ],
+            "columnWidths": "[0.8, 0.2]"
+          },
+          "id": "fbdc1b8b-c1bd-4d3f-a020-199dc4af4fef"
+        },
+        {
+          "title": "Top 10 libri più citati",
+          "query": "MATCH (d:Document)<-[:CITED_IN]-(b:Book where b.title is not null)\nRETURN b.title AS Libro,count(d) as `N. citazioni`\nORDER BY `N. citazioni` DESC\nlimit 10\n\n\n",
+          "width": 8,
+          "height": 3,
+          "x": 0,
+          "y": 19,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "columnWidths": "[0.8, 0.2]"
+          },
+          "id": "0df4ea43-58b0-4b4d-b055-f9fddb4c38c8"
+        },
+        {
+          "title": "Libri citati da più autori",
+          "query": "match (b:Book)-[:CITED_IN]->(d:Document)-[:WRITTEN_BY]->(p:Person)\nwith b, count(distinct p.name) as num, collect(distinct p.name) as people order by num desc\nwhere num >1 \ncall {\nwith b, num, people\nunwind people as person\nreturn  b as interB, num as interNum, apoc.text.replace(person, \", \", \" \") as per\n}\nwith interB , interNum as `N. persone`, collect(per) as `Persone che citano il Libro`\nwith  interB, `N. persone`\noptional match (interB)-[:CITED_IN]-(d:Document)\nwith interB.title as Libro, `N. persone`, count(distinct d) as `N. citazioni`\nwhere Libro is not null\nreturn Libro, `N. persone`,`N. citazioni`\norder by `N. citazioni` desc\n\n\n\n",
+          "width": 16,
+          "height": 4,
+          "x": 8,
+          "y": 18,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Libro",
+                "value": "Libro",
+                "customization": "set variable",
+                "customizationValue": "book"
+              }
+            ],
+            "columnWidths": "[0.6, 0.2, 0.2]"
+          },
+          "id": "25a8a4d7-242d-441f-934e-b39fd8095258"
+        },
+        {
+          "title": "Libro selezionato",
+          "query": "\nRETURN  $neodash_book \n\n\n",
+          "width": 24,
+          "height": 2,
+          "x": 0,
+          "y": 22,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "monospace": true,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "fontSize": 20
+          },
+          "id": "7a26fea5-675d-4f19-a66b-4e8435643d2e"
+        },
+        {
+          "title": "Fields del libro selezionato",
+          "query": "MATCH (b:Book)-[:TAGGED_WITH]-(f:Field) \nWHERE b.title = $neodash_book \nRETURN collect(f.name) as Fields\n\n\n",
+          "width": 24,
+          "height": 2,
+          "x": 0,
+          "y": 28,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "monospace": true,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "fontSize": 30
+          },
+          "id": "2eb48f03-6f94-49a4-9c5b-af192f89072e"
+        },
+        {
+          "title": "Associazione del libro con i temi di discussione",
+          "query": "match (b)-[:CITED_IN]->(d:Document)-[:TAGGED_WITH]-(f:Field)\nwhere b.title = $neodash_book\nreturn f.name as Field, count(distinct d) as `N.Documenti in Field`\norder by `N.Documenti in Field` desc\nlimit 10\n\n\n",
+          "width": 14,
+          "height": 4,
+          "x": 0,
+          "y": 30,
+          "type": "pie",
+          "selection": {
+            "index": "Field",
+            "value": "N.Documenti in Field",
+            "key": "(none)"
+          },
+          "settings": {
+            "innerRadius": 0.5,
+            "arcLinkLabelsOffset": 1,
+            "marginLeft": 40,
+            "marginRight": 40,
+            "marginTop": 40,
+            "enableArcLabels": false,
+            "colors": "paired"
+          },
+          "id": "6519c985-35fb-44f8-b406-d3248529fd4f"
+        },
+        {
+          "title": "Da chi è stato citato il libro?",
+          "query": "MATCH (d:Document)<-[:CITED_IN]-(b:Book{title:$neodash_book})\nmatch (p:Person)<-[:WRITTEN_BY]-(d)\nWITH p,b,count(distinct d) as c\norder by c  desc limit 12\nRETURN b,apoc.create.vRelationship(b, \"IN\", {weight: toFloat(c)}, p),p\n\n\n\n",
+          "width": 10,
+          "height": 4,
+          "x": 0,
+          "y": 24,
+          "type": "sankey",
+          "selection": {
+            "Book": "name",
+            "Person": "name",
+            "MainComponent": "name"
+          },
+          "settings": {
+            "labelProperty": "weight",
+            "colors": "set2"
+          },
+          "id": "4a6bb807-6803-4b89-8a1f-43b5b63a06db"
+        },
+        {
+          "title": "Quando è stato citato il libro (rispetto al totale dei libri citati negli anni)?",
+          "query": "with range(1648, 1667) as period\nunwind period as year\ncall {with year\n      optional match (doc:Document)<-[:CITED_IN]-(:Book)\n      where year = doc.year\n      return count(distinct doc) as totCitingYear\n}\nwith year, totCitingYear\noptional match (b:Book)-[:CITED_IN]->(d:Document)\nwhere year = d.year and b.title = $neodash_book\nreturn year as Anno,\ntotCitingYear as `N. doc con citazioni`,\ncount(distinct d) as `N. doc che citano il libro` order by year \n",
+          "width": 14,
+          "height": 4,
+          "x": 10,
+          "y": 24,
+          "type": "line",
+          "selection": {
+            "x": "Anno",
+            "value": [
+              "N. doc con citazioni",
+              "N. doc che citano il libro"
+            ]
+          },
+          "settings": {
+            "marginRight": 60,
+            "marginTop": 40,
+            "marginBottom": 50,
+            "legendWidth": 180,
+            "curve": "cardinal",
+            "legend": true,
+            "colors": "paired",
+            "marginLeft": 60
+          },
+          "id": "b00fdd31-ecb7-4aa0-9686-e8b47e0e6378"
+        }
+      ]
+    },
+    {
+      "title": "Persone",
+      "reports": [
+        {
+          "title": "Da dove scriveva?",
+          "query": "MATCH (place:Location)<-[r:WRITTEN_FROM]-(:Document)-[:WRITTEN_BY]-(p:Person)\nWHERE p.name = $neodash_person_name\nRETURN place\n\n",
+          "width": 10,
+          "height": 6,
+          "x": 0,
+          "y": 16,
+          "type": "map",
+          "selection": {
+            "Location": "name"
+          },
+          "settings": {
+            "defaultNodeSize": "medium",
+            "hideSelections": true
+          },
+          "id": "20f44019-9c5d-48b3-bcef-69050a77a0bc",
+          "schema": [
+            [
+              "Location",
+              "name",
+              "point"
+            ]
+          ]
+        },
+        {
+          "title": "Seleziona la persona",
+          "query": "\nmatch (p:Person)<-[:WRITTEN_BY|RECEIVED_BY]-(d:Document) \nwith p.name as name, count(d) as `N.doc scritti/ricevuti` order by `N.doc scritti/ricevuti` desc\nwhere `N.doc scritti/ricevuti` >1\nreturn name, `N.doc scritti/ricevuti` \n\n\n",
+          "width": 10,
+          "height": 4,
+          "x": 0,
+          "y": 12,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "name",
+                "value": "name",
+                "customization": "set variable",
+                "customizationValue": "person_name"
+              }
+            ],
+            "columnWidths": "[0.7, 0.3]"
+          },
+          "id": "f85f22e0-c80b-41f9-a7ce-572473b92ef2"
+        },
+        {
+          "title": "Persona selezionata",
+          "query": "RETURN apoc.text.replace( $neodash_person_name, \",\", \"\")\n\n\n",
+          "width": 6,
+          "height": 4,
+          "x": 10,
+          "y": 14,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "fontSize": 28
+          },
+          "id": "8d1adc6f-992a-4be0-9225-d92ac9b50b4c"
+        },
+        {
+          "title": "Nato nel",
+          "query": "MATCH (p:Person where p.birth is not null)\nWHERE p.name = $neodash_person_name\nRETURN toString(p.birth)\n\n\n",
+          "width": 4,
+          "height": 4,
+          "x": 16,
+          "y": 14,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "verticalAlign": "middle",
+            "textAlign": "center"
+          },
+          "id": "9375f051-a57a-4a5c-9795-59bc67014f55"
+        },
+        {
+          "title": "Morto nel",
+          "query": "MATCH (p:Person where p.death is not null)\nWHERE p.name = $neodash_person_name\nRETURN toString(p.death)\n\n\n",
+          "width": 4,
+          "height": 4,
+          "x": 20,
+          "y": 14,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "verticalAlign": "middle",
+            "textAlign": "center"
+          },
+          "id": "a46e411e-24b7-4a2c-af75-a1d263365a16"
+        },
+        {
+          "title": "In che anni scriveva (rispetto alla produzione totale) ?",
+          "query": "match (p:Person)<-[:WRITTEN_BY]-(d:Document)\nwhere p.name = $neodash_person_name \nwith min(d.year) as mn, max(d.year) as mx\nwith range(mn-1, mx+1) as period\nunwind period as year\nmatch (d:Document) \nwhere d.year = year\nwith  year, count(distinct d) as `Totale Documenti`\nMATCH (p:Person{name:$neodash_person_name})\nOPTIONAL MATCH (p)<-[:WRITTEN_BY]-(d:Document)\nWHERE d.year = year\nreturn year, `Totale Documenti`, count(distinct d) as`Documenti scritti dall'autore`\n\n\n",
+          "width": 14,
+          "height": 4,
+          "x": 10,
+          "y": 18,
+          "type": "line",
+          "selection": {
+            "x": "year",
+            "value": [
+              "Totale Documenti",
+              "Documenti scritti dall'autore"
+            ]
+          },
+          "settings": {
+            "colors": "paired",
+            "curve": "cardinal",
+            "marginRight": 50,
+            "marginTop": 60,
+            "marginLeft": 60,
+            "legend": true,
+            "backgroundColor": "white",
+            "legendWidth": 170,
+            "showGrid": false
+          },
+          "id": "b0121556-a48e-44f0-9885-2dd3c78b1541"
+        },
+        {
+          "title": "Luogo del mittente",
+          "query": "MATCH (pl:Location)<-[r:WRITTEN_FROM]-(d:Document)-[:WRITTEN_BY]-(p:Person)\nRETURN pl, count(p) AS c\n",
+          "width": 16,
+          "height": 6,
+          "x": 0,
+          "y": 0,
+          "type": "map",
+          "selection": {
+            "Location": "name"
+          },
+          "settings": {
+            "labelProperty": "weight",
+            "nodeSpacing": 7,
+            "layerType": "markers",
+            "clusterMarkers": true,
+            "hideSelections": true
+          },
+          "id": "8fc34f3c-0af5-4ff1-b07e-49595a9953fd",
+          "schema": [
+            [
+              "Location",
+              "name",
+              "point"
+            ]
+          ]
+        },
+        {
+          "title": "Specifiche tematiche delle lettere scritte",
+          "query": "MATCH (p:Person{name:$neodash_person_name})-[:WRITTEN_BY]-(:Document)-[:TAGGED_WITH]->(f:Tag)\nWITH f,count(*) AS doc,p order by doc desc\nWITH f,toFloat(doc) AS w,p\nreturn f,p,apoc.create.vRelationship(f, \"IN\", {weight: w}, p)\n",
+          "width": 10,
+          "height": 4,
+          "x": 14,
+          "y": 22,
+          "type": "sankey",
+          "selection": {
+            "Tag": "name",
+            "Person": "name",
+            "MainComponent": "name"
+          },
+          "settings": {
+            "labelProperty": "weight",
+            "nodeThickness": 15,
+            "nodeSpacing": 7
+          },
+          "id": "5d46db32-d105-452b-a647-b9b9dbf9fe7b"
+        },
+        {
+          "title": "Numero lettere scritte",
+          "query": "MATCH (p:Person)<-[:WRITTEN_BY]-(d:Document)\nWHERE p.name = $neodash_person_name\nRETURN count(distinct d)\n\n\n",
+          "width": 6,
+          "height": 4,
+          "x": 0,
+          "y": 26,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "fontSize": 80,
+            "backgroundColor": "rgba(18, 63, 157, 0.77)",
+            "color": "lightblue"
+          },
+          "id": "cd09fc8e-ff00-45f1-b95a-4d8c4d51e605"
+        },
+        {
+          "title": "A chi scriveva e di cosa (si mostrano le top 12 tematiche più frequenti)?",
+          "query": "// Step 1: Get top 12 field names\nMATCH (p1 {name:$neodash_person_name})<-[:WRITTEN_BY]-(d)-[:TAGGED_WITH]->(f:Field)\nWITH p1, f, count(DISTINCT d) AS fieldFreq\nORDER BY fieldFreq DESC\nLIMIT 12\nWITH p1, collect(f.name) AS topFieldNames\n\n// Step 2: Get people who have >=2 documents with p1, tagged with those top fields\nMATCH (p1)-[:WRITTEN_BY]-(d)-[:TAGGED_WITH]->(f:Field),\n      (d)-[:RECEIVED_BY]->(p2:Person)\nWHERE f.name IN topFieldNames\nWITH p1, topFieldNames, p2, count(DISTINCT d) AS docCount\nWHERE docCount >= 5\nWITH p1, topFieldNames, collect(p2.name) AS topPeopleNames\n\n// Step 3: Filter documents again for those fields and people\nMATCH (p1)-[:WRITTEN_BY]-(d)-[:RECEIVED_BY]->(p2:Person),\n      (d)-[:TAGGED_WITH]->(f:Field)\nWHERE f.name IN topFieldNames AND p2.name IN topPeopleNames\n\n// Aggregate documents\nWITH p1, p2, f, count(DISTINCT d) AS docs\nWITH p1, f, collect(p2) AS pList, collect(docs) AS countList \nWITH p1, f, pList, countList, reduce(acc = 0, v IN countList | acc + v) AS totFields\nORDER BY totFields DESC\n\n// Create virtual relationship from p1 to f\nWITH p1, pList, countList, f, apoc.create.vRelationship(p1, 'IN', {weight: toFloat(totFields)}, f) AS rel\n\n// Create virtual relationships from f to people\nUNWIND range(0, size(pList) - 1) AS i\nWITH DISTINCT p1, pList[i] AS other, countList[i] AS c, f, rel\nRETURN p1, f, rel, other, apoc.create.vRelationship(f, \"IN\", {weight: toFloat(c)}, other)\n",
+          "width": 14,
+          "height": 4,
+          "x": 0,
+          "y": 22,
+          "type": "sankey",
+          "selection": {
+            "Person": "name",
+            "MainComponent": "name",
+            "Field": "name"
+          },
+          "settings": {
+            "labelProperty": "weight",
+            "marginRight": 40,
+            "marginLeft": 40,
+            "nodeThickness": 18,
+            "nodeSpacing": 7
+          },
+          "id": "29ea9b8b-fd34-493d-84ed-b153abef5170"
+        },
+        {
+          "title": "Numero lettere ricevute",
+          "query": "MATCH (p:Person)<-[:RECEIVED_BY]-(d:Document)\nWHERE p.name = $neodash_person_name\nRETURN count(distinct d)\n\n\n",
+          "width": 6,
+          "height": 4,
+          "x": 6,
+          "y": 26,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "fontSize": 80,
+            "backgroundColor": "rgba(18, 63, 157, 0.77)",
+            "color": "lightblue"
+          },
+          "id": "d97d65e3-89ea-4f13-a427-cff629b4c14e"
+        },
+        {
+          "title": "Specifiche Tematiche delle lettere ricevute",
+          "query": "MATCH (p:Person{name:$neodash_person_name})-[:RECEIVED_BY]-(d:Document)-[:TAGGED_WITH]->(f:Tag)\nWITH p, f, count(distinct d) AS doc order by doc desc limit 10\nreturn f,p,apoc.create.vRelationship(f, \"IN\", {weight: toFloat(doc)}, p)\n",
+          "width": 12,
+          "height": 4,
+          "x": 12,
+          "y": 26,
+          "type": "sankey",
+          "selection": {
+            "Tag": "name",
+            "Person": "name",
+            "MainComponent": "name"
+          },
+          "settings": {
+            "labelProperty": "weight",
+            "nodeSpacing": 7,
+            "nodeThickness": 15
+          },
+          "id": "8242955f-4e9b-4080-b400-f5209ddcebe2"
+        },
+        {
+          "title": "Da chi riceveva lettere e in quale ambito",
+          "query": "MATCH (p1:Person {name:$neodash_person_name})<-[:RECEIVED_BY]-(d:Document)-[:WRITTEN_BY]->(p2:Person)\nWITH p1, p2, count(distinct d) AS tot_doc_exchanged order by tot_doc_exchanged desc limit 15\nMATCH (p1)<-[:RECEIVED_BY]-(d:Document)-[:WRITTEN_BY]->(p2)\nMATCH (d)-[:TAGGED_WITH]->(f:Field)\nWITH p1, p2, f, count(distinct d) AS docs\nWITH p1, f, collect(p2) as pList, collect(docs) as countList\nWITH p1,pList,countList,f,reduce(acc = 0, v in countList | acc + v) AS totFields order by totFields desc limit 10\nWITH f,pList,countList,p1,apoc.create.vRelationship (f, 'IN',{weight:toFloat(totFields)}, p1) AS rel\nUNWIND range(0,size(pList)-1) AS i\nWITH DISTINCT p1, pList[i] as other, countList[i] as c,f,rel\nRETURN other, f, apoc.create.vRelationship(other, \"IN\", {weight: toFloat(c)}, f),  p1, rel\n\n\n",
+          "width": 24,
+          "height": 4,
+          "x": 0,
+          "y": 30,
+          "type": "sankey",
+          "selection": {
+            "Person": "name",
+            "MainComponent": "name",
+            "Field": "name"
+          },
+          "settings": {
+            "labelProperty": "weight",
+            "marginRight": 30,
+            "marginLeft": 30,
+            "nodeSpacing": 7
+          },
+          "id": "557eda84-ee85-48d9-8de0-5d661c6243f4"
+        },
+        {
+          "title": "",
+          "query": "# *Statistiche per persona*\n\n\n",
+          "width": 14,
+          "height": 2,
+          "x": 10,
+          "y": 12,
+          "type": "text",
+          "selection": {},
+          "settings": {},
+          "id": "dd90c9c3-f149-4581-936d-f68d05b9bf07"
+        },
+        {
+          "title": "Network di corrispondenza",
+          "query": "match (p1:MainComponent)-[r:WROTE_TO]-(p2:MainComponent)\nreturn p1, r, p2\n",
+          "width": 16,
+          "height": 8,
+          "x": 0,
+          "y": 40,
+          "type": "graph",
+          "selection": {
+            "Person": "name",
+            "MainComponent": "name",
+            "WROTE_TO": "(label)"
+          },
+          "settings": {
+            "nodeSizeProp": "btw",
+            "nodeColorProp": "colorLouvain",
+            "showPropertiesOnHover": true,
+            "showPropertiesOnClick": false,
+            "autorun": true,
+            "rightClickToExpandNodes": true,
+            "refreshButtonEnabled": false,
+            "relLabelFontSize": 0,
+            "hideSelections": true,
+            "frozen": false,
+            "nodePositions": {},
+            "styleRules": [
+              {
+                "field": "Person.name",
+                "condition": "=",
+                "value": "$neodash_person_name_p1 ",
+                "customization": "node color",
+                "customizationValue": "lightblue"
+              }
+            ],
+            "relWidthProp": "strength",
+            "defaultRelColor": "lightblue",
+            "backgroundColor": "rgba(6, 101, 104, 0.03)",
+            "nodeLabelFontSize": 6,
+            "arrowLengthProp": 5
+          },
+          "id": "104893f5-f633-44b0-865b-6554fa75e49b",
+          "schema": [
+            [
+              "Person",
+              "notes",
+              "death",
+              "btw",
+              "birth",
+              "colorLouvain",
+              "name_la",
+              "community",
+              "louvain",
+              "wcc",
+              "name",
+              "id",
+              "wikipedia",
+              "wikidata",
+              "aka"
+            ],
+            [
+              "MainComponent",
+              "notes",
+              "death",
+              "btw",
+              "birth",
+              "colorLouvain",
+              "name_la",
+              "community",
+              "louvain",
+              "wcc",
+              "name",
+              "id",
+              "wikipedia",
+              "wikidata",
+              "aka"
+            ],
+            [
+              "WROTE_TO",
+              "times",
+              "strength"
+            ]
+          ]
+        },
+        {
+          "title": "Temi di discussione nel gruppo",
+          "query": "match (s:Person where s.name=$neodash_person_name_1) \nMATCH (p:Person)-[r:WROTE_IN_FIELD]->(f:Field)\nWHERE p.louvain = s.louvain\nWITH f.name as field, sum(r.weight) as tot\nRETURN field, tot\nORDER BY tot DESC limit 8\n\n\n\n",
+          "width": 8,
+          "height": 4,
+          "x": 16,
+          "y": 40,
+          "type": "pie",
+          "selection": {
+            "index": "field",
+            "value": "tot",
+            "key": "(none)"
+          },
+          "settings": {
+            "enableArcLabels": false,
+            "innerRadius": 0.5,
+            "borderWidth": 2,
+            "arcLinkLabelsOffset": 1,
+            "marginTop": 50,
+            "marginRight": 40,
+            "marginLeft": 40,
+            "colors": "paired"
+          },
+          "id": "1b22e16b-6c80-4454-9a24-e1f635643de4",
+          "schema": []
+        },
+        {
+          "title": "Inserisci il nome per vedere i field",
+          "query": "MATCH (n:`Person`) \nWHERE toLower(toString(n.`name`)) CONTAINS toLower($input) \nRETURN DISTINCT n.`name` as value,  n.`name` as display ORDER BY size(toString(value)) ASC LIMIT 1000",
+          "width": 8,
+          "height": 2,
+          "x": 16,
+          "y": 38,
+          "type": "select",
+          "selection": {},
+          "settings": {
+            "type": "Node Property",
+            "suggestionLimit": 1000,
+            "defaultValue": "Vincenzo Viviani",
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "name",
+                "value": "name",
+                "customization": "set variable",
+                "customizationValue": "person_name"
+              }
+            ],
+            "id": "1",
+            "backgroundColor": "rgba(250, 250, 250, 0.67)",
+            "clearParameterOnFieldClear": false,
+            "autoSelectFirstValue": true,
+            "multiSelectLimit": 1,
+            "refreshButtonEnabled": false,
+            "entityType": "Person",
+            "propertyType": "name",
+            "propertyTypeDisplay": "name",
+            "parameterName": "neodash_person_name_1",
+            "manualParameterSave": false
+          },
+          "id": "91854a92-2800-41fb-9499-9adb75694800"
+        },
+        {
+          "title": "Lettere scritte da membri del gruppo",
+          "query": "\nMATCH (p:Person)\nWHERE p.name = $neodash_person_name_p1\nwith p \noptional MATCH (p1:Person)-[r:WROTE_TO]->(p2)\nWHERE p1.louvain = p.louvain and p2.louvain = p1.louvain\nwith p1, sum(r.times) as `intra-gruppo`\nOPTIONAL MATCH (p1)-[r:WROTE_TO]->(p2)\nWHERE p1.louvain <> p2.louvain\nRETURN p1.name AS Persona,`intra-gruppo`,sum(r.times) AS `inter-gruppo`\nORDER BY `intra-gruppo` DESC, `inter-gruppo`\n\n\n",
+          "width": 8,
+          "height": 4,
+          "x": 16,
+          "y": 44,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "columnWidths": "[0.6, 0.2, 0.2]"
+          },
+          "id": "aa573a1d-0375-4ddb-9319-d32e0270e207"
+        },
+        {
+          "title": "",
+          "query": "\n\n## *Studio della network di corrispondenza*\n",
+          "width": 16,
+          "height": 2,
+          "x": 0,
+          "y": 38,
+          "type": "text",
+          "selection": {},
+          "settings": {},
+          "id": "4a7754de-9a3b-4b52-adfb-216f0e0422c4"
+        },
+        {
+          "title": "Numero volte citato",
+          "query": "\nmatch (p:Person) where p.name = $neodash_person_name\noptional MATCH (p)-[:QUOTED_IN]->(d)-[:WRITTEN_BY]-()\nreturn count(distinct d) as NumeroDoc\n\n",
+          "width": 6,
+          "height": 4,
+          "x": 10,
+          "y": 34,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "fontSize": 80,
+            "monospace": false,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "backgroundColor": "rgba(18, 63, 157, 0.77)",
+            "color": "lightblue"
+          },
+          "id": "5dfab38b-fbc1-4ef9-9335-f0ff79d78e32"
+        },
+        {
+          "title": "Da chi è stato citato e in quale ambito",
+          "query": "MATCH (p1:Person {name:$neodash_person_name})-[:QUOTED_IN]->(d:Document)-[:WRITTEN_BY]->(p2:Person)\nWITH p1, p2, count(distinct d) as tot order by tot desc limit 12\nMATCH (p1)-[:QUOTED_IN]->(d:Document)-[:WRITTEN_BY]->(p2)\nMATCH (d)-[:TAGGED_WITH]->(f:Field)\nWITH p1, p2, f, count(distinct d) AS docs\nWITH p1, f, collect(p2) as pList, collect(docs) as countList \nWITH p1,pList,countList,f,reduce(acc = 0, v in countList | acc + v) AS totFields order by totFields desc limit 10\nWITH f,pList,countList,p1,apoc.create.vRelationship (f, 'IN',{weight:toFloat(totFields)}, p1) AS rel\nUNWIND range(0,size(pList)-1) AS i\nWITH DISTINCT p1, pList[i] as other, countList[i] as c,f,rel\nRETURN other, f, apoc.create.vRelationship(other, \"IN\", {weight: toFloat(c)}, f),  p1, rel\n\n\n",
+          "width": 10,
+          "height": 4,
+          "x": 0,
+          "y": 34,
+          "type": "sankey",
+          "selection": {
+            "Person": "name",
+            "MainComponent": "name",
+            "Field": "name"
+          },
+          "settings": {
+            "labelProperty": "weight",
+            "marginRight": 30,
+            "marginLeft": 30,
+            "nodeSpacing": 7
+          },
+          "id": "3507c993-fbfa-47a1-95f6-9bf4a418ed81"
+        },
+        {
+          "title": "Luogo del destinatario",
+          "query": "MATCH (pl:Location)<-[r:RECEIVED_IN]-(:Document)-[RECEIVED_BY]-(p:Person)\nRETURN pl,count(p) AS c\n",
+          "width": 16,
+          "height": 6,
+          "x": 8,
+          "y": 6,
+          "type": "map",
+          "selection": {
+            "Location": "name"
+          },
+          "settings": {
+            "labelProperty": "weight",
+            "nodeSpacing": 7,
+            "layerType": "markers",
+            "defaultNodeSize": "medium",
+            "clusterMarkers": true,
+            "hideSelections": true
+          },
+          "id": "a41a7f5a-2a94-494c-a599-aee54c5dfcfd",
+          "schema": [
+            [
+              "Location",
+              "name",
+              "point"
+            ]
+          ]
+        },
+        {
+          "title": "Principali mittenti",
+          "query": "MATCH (p:Person )<-[:WRITTEN_BY]-(d)\nRETURN p.name AS Persona,count(distinct d) AS written\nORDER BY written DESC\n\n\n",
+          "width": 8,
+          "height": 6,
+          "x": 16,
+          "y": 0,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "backgroundColor": "#FDFDFD"
+          },
+          "id": "484f50bd-9542-470b-8b72-5c603fbbad21"
+        },
+        {
+          "title": "Principali destinatari",
+          "query": "MATCH (p:Person)<-[:RECEIVED_BY]-(d)\nRETURN p.name AS Persona,count(distinct d) AS written\nORDER BY written DESC\n\n\n",
+          "width": 8,
+          "height": 6,
+          "x": 0,
+          "y": 6,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "backgroundColor": "#FFFFFF"
+          },
+          "id": "d3d8fe23-b0c9-4331-9cfb-beb9d188cf54"
+        },
+        {
+          "title": "Classifica delle persone più citate",
+          "query": "\nMATCH (p:Person)-[:QUOTED_IN]-(d)\nRETURN p.name AS Persona, count(distinct d) AS written\nORDER BY written DESC\n\n",
+          "width": 8,
+          "height": 4,
+          "x": 16,
+          "y": 34,
+          "type": "table",
+          "selection": {},
+          "settings": {},
+          "id": "635ed355-78e0-424a-a3e3-c5a394981f29"
+        },
+        {
+          "id": "8feaaaa8-e7be-4501-a6ce-2875d3cacef6",
+          "title": "Seleziona mittente",
+          "query": "match (p:Person)-[:WRITTEN_BY]-(d:Document)\nreturn distinct p.name as Name, count(d) as `Sent letters`\nORDER BY `Sent letters` desc\n\n\n",
+          "width": 8,
+          "height": 3,
+          "x": 0,
+          "y": 48,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Name",
+                "value": "Name",
+                "customization": "set variable",
+                "customizationValue": "sender"
+              }
+            ],
+            "columnWidths": "[0.7, 0.3]"
+          }
+        },
+        {
+          "id": "ab57e9d6-106d-4ef3-94b8-866cd967841f",
+          "title": "Mittente",
+          "query": "return $neodash_sender\n\n\n",
+          "width": 8,
+          "height": 2,
+          "x": 0,
+          "y": 51,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "backgroundColor": "#005999",
+            "fontSize": 30,
+            "color": "white",
+            "monospace": true,
+            "textAlign": "center",
+            "verticalAlign": "middle"
+          },
+          "schema": []
+        },
+        {
+          "id": "4573f55f-cc64-4892-a3c1-0e737f6a197c",
+          "title": "Seleziona destinatario",
+          "query": "match (p1:Person)-[:WRITTEN_BY]-(d:Document)-[:RECEIVED_BY]-(p2:Person)\nwhere p1.name = $neodash_sender\nreturn distinct p2.name as Name, count(d) as `Received letters`\nORDER BY `Received letters` desc\n\n\n",
+          "width": 8,
+          "height": 3,
+          "x": 8,
+          "y": 48,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Name",
+                "value": "Name",
+                "customization": "set variable",
+                "customizationValue": "receiver"
+              }
+            ],
+            "columnWidths": "[0.7, 0.3]"
+          }
+        },
+        {
+          "id": "e6a84131-4a2a-43f6-b743-1b899976f72a",
+          "title": "Destinatario",
+          "query": "return $neodash_receiver\n\n\n",
+          "width": 8,
+          "height": 2,
+          "x": 8,
+          "y": 51,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "backgroundColor": "#005999",
+            "fontSize": 30,
+            "color": "white",
+            "monospace": true,
+            "textAlign": "center",
+            "verticalAlign": "middle"
+          },
+          "schema": []
+        },
+        {
+          "id": "fdfa1292-ee9e-49a0-afde-77cdbd683b62",
+          "title": "Seleziona mittente, destinatario e anno per vedere i temi discussi.",
+          "query": "\n// Step 1: Filter letters exchanged between sender and receiver in the given year\nMATCH (p1:Person)<-[:WRITTEN_BY]-(d:Document)-[:TAGGED_WITH]->(f:Field),\n      (p2:Person)<-[:RECEIVED_BY]-(d)\nWHERE p1.name = $neodash_sender \n  AND p2.name = $neodash_receiver \n  AND toString(d.year) = $neodash_year\n\n// Step 2: Count documents per topic\nWITH f.name AS topic, count(DISTINCT d) AS numDocs\nORDER BY numDocs DESC\nLIMIT 10\n\n// Step 3: Return results\nRETURN \n  $neodash_year AS `Anno`,\n  topic AS `Tema di discussione`,\n  CASE WHEN numDocs < 1 THEN 0.001 ELSE numDocs END AS `N. Documenti`\nORDER BY `N. Documenti` DESC\n\n",
+          "width": 24,
+          "height": 4,
+          "x": 0,
+          "y": 53,
+          "type": "table",
+          "selection": {},
+          "settings": {}
+        },
+        {
+          "id": "86febb12-5760-468e-bae7-7474ccdd95d3",
+          "title": "Seleziona l'anno",
+          "query": "match (p1:Person)-[:WRITTEN_BY]-(d:Document)-[:RECEIVED_BY]-(p2:Person)\nwhere p1.name = $neodash_sender and p2.name = $neodash_receiver\nand d.year is not null\nreturn distinct toString(d.year)  as Year, count(d) as `Received letters`\nORDER BY `Received letters` desc\n\n\n",
+          "width": 8,
+          "height": 5,
+          "x": 16,
+          "y": 48,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Year",
+                "value": "Year",
+                "customization": "set variable",
+                "customizationValue": "year"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Instrument Track",
+      "reports": [
+        {
+          "id": "f85a2a88-4e37-4080-9e12-63ed704825c1",
+          "title": "Locating instrument mentions",
+          "query": "match p = (h1:Human)-[m:MENTIONS_TO]->(h2:Human)\nwhere $neodash_tool in m.instruments \n//AND $neodash_document_year_1648<=m.date.year<=$neodash_document_year_1680\nreturn p\n\n",
+          "width": 16,
+          "height": 7,
+          "x": 0,
+          "y": 0,
+          "type": "map",
+          "selection": {
+            "Human": "place"
+          },
+          "settings": {
+            "nodeColorScheme": "accent",
+            "relLabelFontSize": 0,
+            "relationshipParticles": true,
+            "showPropertiesOnHover": true,
+            "rightClickToExpandNodes": true,
+            "separateOverlappingMarkers": true,
+            "hideSelections": false,
+            "defaultNodeSize": "medium",
+            "defaultRelColor": "#99CCCC"
+          },
+          "schema": [
+            [
+              "Human",
+              "name",
+              "place",
+              "point"
+            ]
+          ]
+        },
+        {
+          "id": "aa6bf31e-dda9-42d8-869c-a95c9122fdff",
+          "title": "Select an instrument",
+          "query": "MATCH (d:Document)<-[:CITED_IN]-(i:Instrument)\nOPTIONAL MATCH (root)<-[:CHILD_OF*1]-(i)\nWITH d, CASE WHEN root IS NOT NULL THEN root ELSE i END AS parent\nWITH parent, count(DISTINCT d) AS `N. mentions` \nRETURN parent.name AS Instrument, `N. mentions` \nORDER BY `N. mentions`  DESC\n\n\n\n",
+          "width": 8,
+          "height": 4,
+          "x": 16,
+          "y": 0,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Instrument",
+                "value": "Instrument",
+                "customization": "set variable",
+                "customizationValue": "tool"
+              }
+            ],
+            "columnWidths": "[0.7, 0.3]"
+          }
+        },
+        {
+          "id": "7ba65021-d17c-4fa5-9fd4-4d166bc0568a",
+          "title": "First mention ",
+          "query": "MATCH (d:Document)<-[:CITED_IN]-(i:Instrument)\nwhere i.name = $neodash_tool\nreturn min(d.year) + \"\" as first_year\n\n\n\n",
+          "width": 4,
+          "height": 3,
+          "x": 16,
+          "y": 4,
+          "type": "value",
+          "selection": {},
+          "settings": {},
+          "schema": []
+        },
+        {
+          "id": "99a7a2b4-c1a5-45dd-9f9a-e4d88dace3a5",
+          "title": "Graph of instrument mentions",
+          "query": "\nmatch p = (h1:Human)-[m:MENTIONS_TO]->(h2:Human)\nwhere $neodash_tool in m.instruments \nAND $neodash_document_year_1630<=m.date.year<=$neodash_document_year_1680\nreturn p\n\n\n\n",
+          "width": 11,
+          "height": 5,
+          "x": 13,
+          "y": 7,
+          "type": "graph3d",
+          "selection": {
+            "Human": "name"
+          },
+          "settings": {
+            "relLabelFontSize": 0,
+            "showPropertiesOnHover": true,
+            "rightClickToExpandNodes": true,
+            "nodeColorScheme": "paired",
+            "nodeLabelColor": "#4C767E",
+            "backgroundColor": "#FCFFFF",
+            "arrowLengthProp": 3
+          },
+          "schema": [
+            [
+              "Human",
+              "name",
+              "place",
+              "point"
+            ]
+          ]
+        },
+        {
+          "id": "6ad277fe-f5fe-490f-bebf-35da78d9db62",
+          "title": "Last mention ",
+          "query": "MATCH (d:Document)<-[:CITED_IN]-(i:Instrument)\nwhere i.name = $neodash_tool\nreturn max(d.year) + \"\" as first_year\n\n\n\n",
+          "width": 4,
+          "height": 3,
+          "x": 20,
+          "y": 4,
+          "type": "value",
+          "selection": {},
+          "settings": {},
+          "schema": []
+        },
+        {
+          "id": "2734d5dd-6fda-4ef5-aa98-c14892790afd",
+          "title": "Instrument mentions over time ",
+          "query": "MATCH (i:Instrument where i.name = $neodash_tool)\nOPTIONAL MATCH (i)<-[:CHILD_OF*]-(child) \nwith  i, collect(child.name) + i.name as tools\nmatch (d:Document)-[:CITED_IN]-(in:Instrument) where in.name in tools\nwith range(min(d.year), max(d.year)) as period, tools\nunwind period as year\ncall {with year, tools\n  unwind tools as tool\n  match (d:Document)<-[:CITED_IN]-(f:Instrument)\n  where f.name = tool and d.year = year\n  return year as year_id, count(distinct d) as n_mentions}\nreturn year_id, n_mentions\n\n\n",
+          "width": 13,
+          "height": 3,
+          "x": 0,
+          "y": 9,
+          "type": "line",
+          "selection": {
+            "x": "year_id",
+            "value": [
+              "n_mentions"
+            ]
+          },
+          "settings": {
+            "colors": "paired",
+            "curve": "basis",
+            "showGrid": true,
+            "marginRight": 40,
+            "marginTop": 50,
+            "marginBottom": 50,
+            "hideSelections": true,
+            "marginLeft": 0,
+            "backgroundColor": "#A6D3DC6B"
+          },
+          "schema": []
+        },
+        {
+          "id": "dbc1d427-938c-4154-9b16-94bf7170ab09",
+          "title": "Main Topics discussed by people mentioning the instrument",
+          "query": "// collect all children/parents for a tool if any\nMATCH (i:Instrument where i.name = $neodash_tool)\nOPTIONAL MATCH (i)-[:CHILD_OF*]-(child) \nwith  i, collect(child.name) + i.name as tools\n// find people that have mentioned the instrument(or its children)\nmatch (p:Person)-[:WRITTEN_BY|:RECEIVED_BY]-(d:Document)-[:CITED_IN]-(ins:Instrument)\nwhere ins.name in tools\nwith p// retrieve topics those people discussed in their letters (any letter)\nmatch (p)<-[:WRITTEN_BY]-(d:Document)-[:TAGGED_WITH]->(f:Field)\nWITH distinct  f, count(distinct d) AS docs order by docs desc \nwith f, docs  limit 10 // take 10 most impo topics\nwith f, range($neodash_document_year_1648, $neodash_document_year_1680) as period\nunwind period as year\noptional match (p)<-[:WRITTEN_BY]-(d)-[:TAGGED_WITH]->(fd:Field)\nwhere fd.name = f.name and d.year = year\nwith  year, f, count(distinct d) as numDocs \nreturn year as `Anno`,\ncase when numDocs<1 then 0.001 else numDocs end as `N. Documenti`,\nf.name as `Tema di discussione` order by `Anno`\n\n\n\n",
+          "width": 16,
+          "height": 4,
+          "x": 0,
+          "y": 12,
+          "type": "bar",
+          "selection": {
+            "index": "Anno",
+            "value": "N. Documenti",
+            "key": "Tema di discussione"
+          },
+          "settings": {
+            "showOptionalSelections": true,
+            "legend": true,
+            "barValues": false,
+            "colors": "paired",
+            "labelSkipHeight": 5,
+            "hideSelections": false
+          },
+          "schema": []
+        },
+        {
+          "id": "b21d645c-6854-412c-a010-ad226b33a3ef",
+          "title": "Select starting year",
+          "query": "MATCH (n:`Document`) \nWHERE toLower(toString(n.`year`)) CONTAINS toLower($input) \nRETURN DISTINCT n.`year` as value,  n.`year` as display ORDER BY size(toString(value)) ASC LIMIT 5",
+          "width": 8,
+          "height": 2,
+          "x": 16,
+          "y": 12,
+          "type": "select",
+          "selection": {},
+          "settings": {
+            "type": "Node Property",
+            "entityType": "Document",
+            "propertyType": "year",
+            "propertyTypeDisplay": "year",
+            "parameterName": "neodash_document_year_1630",
+            "id": "1630"
+          },
+          "schema": []
+        },
+        {
+          "id": "4fe429e5-6af8-48f5-b3ac-9d90f920f65f",
+          "title": "Select ending year",
+          "query": "MATCH (n:`Document`) \nWHERE toLower(toString(n.`year`)) CONTAINS toLower($input) \nRETURN DISTINCT n.`year` as value,  n.`year` as display ORDER BY size(toString(value)) ASC LIMIT 5",
+          "width": 8,
+          "height": 2,
+          "x": 16,
+          "y": 14,
+          "type": "select",
+          "selection": {},
+          "settings": {
+            "type": "Node Property",
+            "entityType": "Document",
+            "propertyType": "year",
+            "propertyTypeDisplay": "year",
+            "parameterName": "neodash_document_year_1680",
+            "id": "1680"
+          },
+          "schema": []
+        },
+        {
+          "id": "21780a70-3ee5-4cf5-8b09-b91c4fa5acaf",
+          "title": "...",
+          "query": "return $neodash_tool \n\n\n\n",
+          "width": 13,
+          "height": 2,
+          "x": 0,
+          "y": 7,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "backgroundColor": "#005999",
+            "color": "white",
+            "monospace": true,
+            "textAlign": "center",
+            "verticalAlign": "middle"
+          },
+          "schema": []
+        }
+      ]
+    },
+    {
+      "title": "Experiment Track",
+      "reports": [
+        {
+          "id": "69bc46a6-0e88-43f7-b129-dd278cb197cc",
+          "title": "Locating experiment mentions",
+          "query": "match p = (h1:Human)-[m:MENTIONS_TO]->(h2:Human)\nwhere $neodash_experiment in m.experiments \n//AND $neodash_document_year_1648<=m.date.year<=$neodash_document_year_1680\nreturn p\n\n\n",
+          "width": 14,
+          "height": 7,
+          "x": 0,
+          "y": 0,
+          "type": "map",
+          "selection": {
+            "Human": "place"
+          },
+          "settings": {
+            "nodeColorScheme": "category10",
+            "layerType": "markers"
+          },
+          "schema": [
+            [
+              "Human",
+              "name",
+              "place",
+              "point"
+            ]
+          ]
+        },
+        {
+          "id": "8a3bb4de-c3db-4ff0-a849-cbcbb944270e",
+          "title": "Select an experiment",
+          "query": "MATCH (d:Document)<-[:CITED_IN]-(i:Experiment)\nOPTIONAL MATCH (root)-[:PARENT_OF*1]->(i)\nWITH d, CASE WHEN root IS NOT NULL THEN root ELSE i END AS parent\nWITH parent, count(DISTINCT d) AS `N. mentions` \nRETURN parent.name AS Experiment, `N. mentions` \nORDER BY `N. mentions`  DESC\n\n\n\n",
+          "width": 10,
+          "height": 4,
+          "x": 14,
+          "y": 0,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "columnWidths": "[0.7, 0.3]",
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "Experiment",
+                "value": "Experiment",
+                "customization": "set variable",
+                "customizationValue": "experiment"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a0257065-560c-4e49-9477-1f0c1f7bfa1a",
+          "title": "First mentioned in",
+          "query": "MATCH (d:Document)<-[:CITED_IN]-(i:Experiment)\nwhere i.name = $neodash_experiment\nreturn min(d.year) + \"\" as first_year\n\n\n\n",
+          "width": 5,
+          "height": 3,
+          "x": 14,
+          "y": 4,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "styleRules": [
+              {
+                "field": "",
+                "condition": "=",
+                "value": "",
+                "customization": "text color",
+                "customizationValue": "black"
+              }
+            ]
+          },
+          "schema": []
+        },
+        {
+          "id": "d62844bd-f8c1-400e-8b4a-fd2fe4a6519d",
+          "title": "Last mentioned in",
+          "query": "MATCH (d:Document)<-[:CITED_IN]-(i:Experiment)\nwhere i.name = $neodash_experiment\nreturn max(d.year) + \"\" as last_year\n\n\n\n",
+          "width": 5,
+          "height": 3,
+          "x": 19,
+          "y": 4,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "textAlign": "center",
+            "verticalAlign": "middle"
+          },
+          "schema": []
+        },
+        {
+          "id": "0befa5d5-ece7-4864-ace4-aa8282a139b1",
+          "title": "Graph of experiment mentions",
+          "query": "\nmatch p = (h1:Human)-[m:MENTIONS_TO]->(h2:Human)\nwhere $neodash_experiment in m.experiments \nAND $neodash_document_year_1630<=m.date.year<=$neodash_document_year_1680\nreturn p\n\n\n",
+          "width": 13,
+          "height": 6,
+          "x": 11,
+          "y": 7,
+          "type": "graph3d",
+          "selection": {
+            "Human": "name"
+          },
+          "settings": {
+            "nodeColorScheme": "paired",
+            "relLabelFontSize": 0,
+            "showPropertiesOnHover": true
+          },
+          "schema": [
+            [
+              "Human",
+              "name",
+              "place",
+              "point"
+            ]
+          ]
+        },
+        {
+          "id": "c87992b2-0b47-478f-b718-a9dae84426ba",
+          "title": "Select the start year",
+          "query": "MATCH (n:`Document`) \nWHERE toLower(toString(n.`year`)) CONTAINS toLower($input) \nRETURN DISTINCT n.`year` as value,  n.`year` as display ORDER BY size(toString(value)) ASC LIMIT 5",
+          "width": 7,
+          "height": 2,
+          "x": 17,
+          "y": 13,
+          "type": "select",
+          "selection": {},
+          "settings": {
+            "type": "Node Property",
+            "entityType": "Document",
+            "propertyType": "year",
+            "propertyTypeDisplay": "year",
+            "parameterName": "neodash_document_year_1630",
+            "id": "1630"
+          },
+          "schema": []
+        },
+        {
+          "id": "cfe19d4f-b2ab-48e8-9eab-33bdb0c3cc49",
+          "title": "Select the end year",
+          "query": "MATCH (n:`Document`) \nWHERE toLower(toString(n.`year`)) CONTAINS toLower($input) \nRETURN DISTINCT n.`year` as value,  n.`year` as display ORDER BY size(toString(value)) ASC LIMIT 5",
+          "width": 7,
+          "height": 2,
+          "x": 17,
+          "y": 15,
+          "type": "select",
+          "selection": {},
+          "settings": {
+            "type": "Node Property",
+            "entityType": "Document",
+            "propertyType": "year",
+            "propertyTypeDisplay": "year",
+            "parameterName": "neodash_document_year_1680",
+            "id": "1680"
+          },
+          "schema": []
+        },
+        {
+          "id": "a54ba759-fe22-47e9-8800-bc7db9f3a328",
+          "title": "Selected experiment:",
+          "query": "return $neodash_experiment\n\n\n",
+          "width": 11,
+          "height": 2,
+          "x": 0,
+          "y": 7,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "backgroundColor": "#EF9E3B",
+            "monospace": true,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "fontSize": 30
+          },
+          "schema": []
+        },
+        {
+          "id": "6692c31a-0313-4987-9d42-4877a8a5faed",
+          "title": "Experiment mentions over time ",
+          "query": "MATCH (i:Experiment where i.name = $neodash_experiment)\nOPTIONAL MATCH (i)-[:PARENT_OF*]->(child) \nwith  i, collect(child.name) + i.name as tools\nmatch (d:Document)-[:CITED_IN]-(in:Experiment) where in.name in tools\nwith range(min(d.year), max(d.year)) as period, tools\nunwind period as year\ncall {with year, tools\n  unwind tools as tool\n  match (d:Document)<-[:CITED_IN]-(f:Experiment)\n  where f.name = tool and d.year = year\n  return year as year_id, count(distinct d) as n_mentions}\nreturn year_id, n_mentions\n\n\n",
+          "width": 11,
+          "height": 4,
+          "x": 0,
+          "y": 9,
+          "type": "line",
+          "selection": {
+            "x": "year_id",
+            "value": [
+              "n_mentions"
+            ]
+          },
+          "settings": {
+            "colors": "paired",
+            "curve": "cardinal",
+            "showGrid": false,
+            "legend": false,
+            "hideSelections": true
+          },
+          "schema": []
+        },
+        {
+          "id": "5d5143e6-44fa-4fc5-9e22-6d63b1e70564",
+          "title": "Main Topics discussed by people mentioning the experiment ",
+          "query": "// collect all children/parents for a tool if any\nMATCH (i:Experiment where i.name = $neodash_experiment)\nOPTIONAL MATCH (i)-[:PARENT_OF*]->(child) \nwith  i, collect(child.name) + i.name as tools\n// find people that have mentioned the instrument(or its children)\nmatch (p:Person)-[:WRITTEN_BY|:RECEIVED_BY]-(d:Document)-[:CITED_IN]-(ins:Experiment)\nwhere ins.name in tools\nwith p// retrieve topics those people discussed in their letters (any letter)\nmatch (p)<-[:WRITTEN_BY]-(d:Document)-[:TAGGED_WITH]->(f:Field)\nWITH distinct  f, count(distinct d) AS docs order by docs desc \nwith f, docs  limit 10 // take 10 most impo topics\nwith f, range($neodash_document_year_1648, $neodash_document_year_1680) as period\nunwind period as year\noptional match (p)<-[:WRITTEN_BY]-(d)-[:TAGGED_WITH]->(fd:Field)\nwhere fd.name = f.name and d.year = year\nwith  year, f, count(distinct d) as numDocs \nreturn year as `Anno`,\ncase when numDocs<1 then 0.001 else numDocs end as `N. Documenti`,\nf.name as `Tema di discussione` order by `Anno`\n\n\n",
+          "width": 17,
+          "height": 4,
+          "x": 0,
+          "y": 13,
+          "type": "bar",
+          "selection": {
+            "index": "Anno",
+            "value": "N. Documenti",
+            "key": "Tema di discussione"
+          },
+          "settings": {
+            "showOptionalSelections": true,
+            "colors": "paired",
+            "hideSelections": true
+          },
+          "schema": []
+        }
+      ]
+    }
+  ],
+  "parameters": {},
+  "extensions": {
+    "advanced-charts": {
+      "active": true
+    },
+    "styling": {
+      "active": true
+    },
+    "active": true,
+    "activeReducers": [],
+    "actions": {
+      "active": true
+    }
+  },
+  "uuid": "1eb693cf-d533-4556-85e4-58f7f05e42a2"
+}
